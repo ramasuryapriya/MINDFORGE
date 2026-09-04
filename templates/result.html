@@ -1,0 +1,133 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindForge - Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>🧠 MindForge</h1>
+
+        <p>Challenge Complete!</p>
+
+    </header>
+
+
+    <!-- RESULT -->
+
+    <section class="result">
+
+        {% if result.correct == result.total %}
+
+            <h2>🎉 Perfect Round!</h2>
+
+        {% elif result.correct > 0 %}
+
+            <h2>👍 Good Job!</h2>
+
+        {% else %}
+
+            <h2>💪 Keep Practicing!</h2>
+
+        {% endif %}
+
+
+        <p>
+            <strong>Challenge:</strong>
+            {{ result.skill }}
+        </p>
+
+
+        <p>
+            <strong>Difficulty:</strong>
+            {{ result.difficulty.capitalize() }}
+        </p>
+
+
+        <hr>
+
+
+        <p>
+            ✅ Correct:
+            {{ result.correct }}/{{ result.total }}
+        </p>
+
+
+        <p>
+            📊 Performance:
+            {{ result.performance }}%
+        </p>
+
+
+        <p>
+            ⭐ Points Earned:
+            +{{ result.points }}
+        </p>
+
+
+        <hr>
+
+
+        <p>
+            ⭐ Total Points:
+            {{ player.total_points }}
+        </p>
+
+
+        <p>
+            🔥 Current Streak:
+            {{ player.streak }}
+        </p>
+
+
+        <p>
+            🔥 Best Streak:
+            {{ player.best_streak }}
+        </p>
+
+
+        <p>
+            🎮 Games Played:
+            {{ player.games_played }}
+        </p>
+
+
+        <br>
+
+
+        <a href="{{ url_for('home') }}"
+           class="start-button">
+
+            🏠 Back to Mind Profile
+
+        </a>
+
+    </section>
+
+
+</div>
+
+</body>
+
+</html>
+```

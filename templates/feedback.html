@@ -1,0 +1,101 @@
+````html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindForge - Feedback</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <section class="hero">
+
+        {% if feedback.correct %}
+
+            <h1>✅ Correct!</h1>
+
+            <p>Great job! 🎉</p>
+
+        {% else %}
+
+            <h1>❌ Incorrect!</h1>
+
+            <h2>
+                Correct Answer:
+                {{ feedback.correct_answer }}
+            </h2>
+
+        {% endif %}
+
+
+        <hr>
+
+
+        <p>
+            ⏱️ Time:
+            {{ feedback.time }} seconds
+        </p>
+
+
+        <p>
+            📊 Performance:
+            {{ feedback.performance }}%
+        </p>
+
+
+        <p>
+            ⭐ Points:
+            +{{ feedback.points }}
+        </p>
+
+
+        <p>
+            Question
+            {{ question_number }}
+            /
+            {{ total_questions }}
+        </p>
+
+
+        {% if finished %}
+
+            <a href="{{ url_for('home') }}"
+               class="start-button">
+
+                🏠 Back to Home
+
+            </a>
+
+        {% else %}
+
+            <a href="{{ url_for('challenge') }}"
+               class="start-button">
+
+                ➡️ Next Question
+
+            </a>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+</body>
+
+</html>
+```
+

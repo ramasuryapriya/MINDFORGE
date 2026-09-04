@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindForge - {{ skill }}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <h1>🧠 MindForge</h1>
+
+        <p>{{ skill }} Challenge</p>
+
+    </header>
+
+
+    <section class="hero">
+
+        <p>
+            Question {{ question_number }}
+            / {{ total_questions }}
+        </p>
+
+        <h2>{{ difficulty }} Difficulty</h2>
+
+
+        <!-- =====================================
+             PATTERN RECOGNITION
+        ====================================== -->
+
+        {% if skill == "Pattern Recognition" %}
+
+        <div class="pattern-game">
+
+            <h2>🔍 {{ question }}</h2>
+
+
+            <div class="visual-sequence">
+
+                {% for item in sequence %}
+
+                <div class="visual-box">
+                    {{ item }}
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <p class="instruction">
+                Select the correct pattern:
+            </p>
+
+
+            <form method="POST"
+                  action="{{ url_for('challenge') }}">
+
+                <div class="visual-options">
+
+                    {% for option in options %}
+
+                    <button
+                        type="submit"
+                        name="answer"
+                        value="{{ option }}"
+                        class="visual-option"
+                        style="
+                            color: #000000 !important;
+                            background-color: #ffffff !important;
+                            -webkit-text-fill-color: #000000 !important;
+                            border: 3px solid #000000 !important;
+                        ">
+
+                        {{ ["A", "B", "C", "D"][loop.index0] }}.
+                        {{ option }}
+
+                    </button>
+
+                    {% endfor %}
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <!-- =====================================
+             STRATEGY
+        ====================================== -->
+
+        {% elif skill == "Strategy" %}
+
+        <div class="strategy-game">
+
+            <h2>🎯 Strategy Challenge</h2>
+
+            <div class="strategy-question">
+
+                {{ question }}
+
+            </div>
+
+            <p>
+                Type your answer:
+            </p>
+
+            <form method="POST"
+                  action="{{ url_for('challenge') }}">
+
+                <input
+                    type="text"
+                    name="answer"
+                    placeholder="Enter your answer"
+                    autocomplete="off"
+                    autofocus
+                    required>
+
+                <br><br>
+
+                <button type="submit">
+
+                    Submit Answer
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- =====================================
+             MEMORY
+        ====================================== -->
+
+        {% elif skill == "Memory" %}
+
+        <div id="memory-area">
+
+            <h2>🧠 Memorize this sequence</h2>
+
+            <div class="memory-sequence">
+
+                {{ question }}
+
+            </div>
+
+            <h3 id="countdown">
+
+                Memorize for 5 seconds...
+
+            </h3>
+
+        </div>
+
+
+        <div id="answer-area"
+             style="display:none;">
+
+            <h2>
+                Now recall the sequence
+            </h2>
+
+            <form method="POST"
+                  action="{{ url_for('challenge') }}">
+
+                <input
+                    type="text"
+                    name="answer"
+                    placeholder="Enter the sequence"
+                    autocomplete="off"
+                    autofocus
+                    required>
+
+                <br><br>
+
+                <button type="submit">
+
+                    Submit Answer
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- =====================================
+             LOGIC / ATTENTION / OTHER
+        ====================================== -->
+
+        {% else %}
+
+        <div class="question">
+
+            <h2>
+                {{ question }}
+            </h2>
+
+            <form method="POST"
+                  action="{{ url_for('challenge') }}">
+
+                <input
+                    type="text"
+                    name="answer"
+                    placeholder="Enter your answer"
+                    autocomplete="off"
+                    autofocus
+                    required>
+
+                <br><br>
+
+                <button type="submit">
+
+                    Submit Answer
+
+                </button>
+
+            </form>
+
+        </div>
+
+        {% endif %}
+
+    </section>
+
+</div>
+
+
+<!-- =====================================
+     MEMORY TIMER
+====================================== -->
+
+<script>
+
+{% if skill == "Memory" %}
+
+let countdown = 5;
+
+const countdownElement =
+    document.getElementById("countdown");
+
+const memoryArea =
+    document.getElementById("memory-area");
+
+const answerArea =
+    document.getElementById("answer-area");
+
+
+const memoryTimer = setInterval(function () {
+
+    countdown--;
+
+    if (countdown > 0) {
+
+        countdownElement.textContent =
+            "Hiding in " + countdown + " seconds...";
+
+    }
+
+
+    if (countdown <= 0) {
+
+        clearInterval(memoryTimer);
+
+        memoryArea.style.display = "none";
+
+        answerArea.style.display = "block";
+
+    }
+
+}, 1000);
+
+{% endif %}
+
+</script>
+
+
+</body>
+
+</html>
+

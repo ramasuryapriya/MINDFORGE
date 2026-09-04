@@ -1,0 +1,376 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MindForge</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>🧠 MindForge</h1>
+
+        <p>Play. Think. Adapt. Grow.</p>
+
+    </header>
+
+
+    <!-- ADAPTIVE CHALLENGE -->
+
+    <section class="hero">
+
+        <h2>⚙️ Adaptive Challenge</h2>
+
+        <p>
+            MindForge automatically chooses
+            your weakest or unassessed skill.
+        </p>
+
+        <a href="{{ url_for('start') }}"
+           class="start-button">
+
+            🎮 Start Adaptive Challenge
+
+        </a>
+
+    </section>
+
+
+    <!-- MIND PROFILE -->
+
+    <section class="skills">
+
+        <h2>🧠 Your Mind Profile</h2>
+
+
+        <div class="skill-grid">
+
+
+            <!-- LOGIC -->
+
+            <div class="skill-card">
+
+                <h3>🧠 Logic</h3>
+
+                {% if player.skills["Logic"] == 0 %}
+
+                    <p>Not assessed</p>
+
+                {% else %}
+
+                    <p>
+                        {{ player.skills["Logic"] }}%
+                    </p>
+
+                {% endif %}
+
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                         style="width: {{ player.skills['Logic'] }}%">
+                    </div>
+
+                </div>
+
+
+                <a href="{{ url_for('start_skill', skill='Logic') }}"
+                   class="play-button">
+
+                    ▶ Play Logic
+
+                </a>
+
+            </div>
+
+
+
+            <!-- PATTERN -->
+
+            <div class="skill-card">
+
+                <h3>🔍 Pattern Recognition</h3>
+
+                {% if player.skills["Pattern Recognition"] == 0 %}
+
+                    <p>Not assessed</p>
+
+                {% else %}
+
+                    <p>
+                        {{ player.skills["Pattern Recognition"] }}%
+                    </p>
+
+                {% endif %}
+
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                         style="width: {{ player.skills['Pattern Recognition'] }}%">
+                    </div>
+
+                </div>
+
+
+                <a href="{{ url_for('start_skill', skill='Pattern Recognition') }}"
+                   class="play-button">
+
+                    ▶ Play Pattern
+
+                </a>
+
+            </div>
+
+
+
+            <!-- MEMORY -->
+
+            <div class="skill-card">
+
+                <h3>🧠 Memory</h3>
+
+                {% if player.skills["Memory"] == 0 %}
+
+                    <p>Not assessed</p>
+
+                {% else %}
+
+                    <p>
+                        {{ player.skills["Memory"] }}%
+                    </p>
+
+                {% endif %}
+
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                         style="width: {{ player.skills['Memory'] }}%">
+                    </div>
+
+                </div>
+
+
+                <a href="{{ url_for('start_skill', skill='Memory') }}"
+                   class="play-button">
+
+                    ▶ Play Memory
+
+                </a>
+
+            </div>
+
+
+
+            <!-- STRATEGY -->
+
+            <div class="skill-card">
+
+                <h3>🎯 Strategy</h3>
+
+                {% if player.skills["Strategy"] == 0 %}
+
+                    <p>Not assessed</p>
+
+                {% else %}
+
+                    <p>
+                        {{ player.skills["Strategy"] }}%
+                    </p>
+
+                {% endif %}
+
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                         style="width: {{ player.skills['Strategy'] }}%">
+                    </div>
+
+                </div>
+
+
+                <a href="{{ url_for('start_skill', skill='Strategy') }}"
+                   class="play-button">
+
+                    ▶ Play Strategy
+
+                </a>
+
+            </div>
+
+
+
+            <!-- ATTENTION -->
+
+            <div class="skill-card">
+
+                <h3>👀 Attention</h3>
+
+                {% if player.skills["Attention"] == 0 %}
+
+                    <p>Not assessed</p>
+
+                {% else %}
+
+                    <p>
+                        {{ player.skills["Attention"] }}%
+                    </p>
+
+                {% endif %}
+
+
+                <div class="progress">
+
+                    <div class="progress-bar"
+                         style="width: {{ player.skills['Attention'] }}%">
+                    </div>
+
+                </div>
+
+
+                <a href="{{ url_for('start_skill', skill='Attention') }}"
+                   class="play-button">
+
+                    ▶ Play Attention
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- PLAYER STATS -->
+
+    <section class="stats">
+
+
+        <div>
+
+            <strong>
+                ⭐ {{ player.total_points }}
+            </strong>
+
+            <span>Points</span>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                🏆 {{ (player.total_points // 100) + 1 }}
+            </strong>
+
+            <span>Level</span>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                🔥 {{ player.streak }}
+            </strong>
+
+            <span>Streak</span>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                🎮 {{ player.games_played }}
+            </strong>
+
+            <span>Games</span>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- BEST STREAK -->
+
+    <section class="stats">
+
+        <div>
+
+            <strong>
+                🔥 {{ player.best_streak }}
+            </strong>
+
+            <span>Best Streak</span>
+
+        </div>
+
+    </section>
+
+
+    <!-- BADGES -->
+
+    <section class="badges">
+
+        <h2>🏅 Badges</h2>
+
+
+        {% if player.badges %}
+
+            <div class="badge-list">
+
+                {% for badge in player.badges %}
+
+                    <div class="badge">
+
+                        🏅 {{ badge }}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <p>
+                No badges yet.
+                Complete challenges to earn them!
+            </p>
+
+        {% endif %}
+
+    </section>
+
+
+</div>
+
+</body>
+
+</html>
+```
+

@@ -1,0 +1,483 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    text-align: center;
+    padding: 40px 20px 25px;
+}
+
+header h1 {
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #666;
+    font-size: 17px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background: white;
+    text-align: center;
+
+    padding: 45px 25px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 30px;
+}
+
+.hero h2 {
+    font-size: 30px;
+    margin: 15px 0;
+}
+
+.hero p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button,
+.start-button {
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #222;
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+button:hover,
+.start-button:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills {
+    margin-top: 35px;
+}
+
+.skills h2 {
+    margin-bottom: 20px;
+}
+
+.skill-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+
+    gap: 18px;
+}
+
+.skill {
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.skill h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progress {
+    width: 100%;
+    height: 10px;
+
+    background: #e5e7eb;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+
+    background: #222;
+
+    border-radius: 10px;
+
+    transition: width 0.5s ease;
+}
+
+.skill span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin: 35px 0;
+}
+
+.stats div {
+    background: white;
+
+    padding: 22px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.stats strong,
+.stats span {
+    display: block;
+}
+
+.stats strong {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.stats span {
+    color: #777;
+}
+
+
+/* =========================
+   BADGES
+========================= */
+
+.badges {
+    margin-bottom: 50px;
+}
+
+.badges h2 {
+    margin-bottom: 20px;
+}
+
+.badge-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.badge {
+    background: white;
+
+    padding: 15px 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.06);
+
+    font-weight: 500;
+}
+
+.no-badges {
+    color: #777;
+}
+
+
+/* =========================
+   GAME / QUESTION
+========================= */
+
+.question {
+    margin-top: 30px;
+
+    padding: 30px;
+
+    background: #f8f9fc;
+
+    border-radius: 15px;
+}
+
+.question h2 {
+    font-size: 28px;
+
+    margin-bottom: 25px;
+
+    color: #222;
+}
+
+
+/* ANSWER INPUT */
+
+.question input {
+    width: 100%;
+
+    max-width: 400px;
+
+    padding: 14px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.question input:focus {
+    border-color: #222;
+}
+
+
+/* TIMER */
+
+.timer {
+    margin: 15px 0;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+    text-align: center;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.result h2 {
+    margin-bottom: 15px;
+}
+
+.result p {
+    margin: 8px 0;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    .stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .question h2 {
+        font-size: 22px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .container {
+        width: 94%;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 30px 18px;
+    }
+
+    .question {
+        padding: 20px;
+    }
+
+}
+```css
+.pattern-game {
+    text-align: center;
+}
+
+.visual-sequence {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 35px 0;
+    flex-wrap: wrap;
+}
+
+.visual-box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    font-size: 42px;
+    background: white;
+}
+
+.visual-box.missing {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.instruction {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.visual-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.visual-option {
+    min-width: 110px;
+    min-height: 90px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    background: white;
+    font-size: 38px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.visual-option:hover {
+    transform: scale(1.08);
+    border-color: #555;
+}
+```
+/* PATTERN ANSWER OPTIONS */
+
+.pattern-options {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    max-width: 700px !important;
+    margin: 30px auto !important;
+}
+
+.pattern-option {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    min-height: 90px !important;
+    width: 100% !important;
+
+    padding: 15px !important;
+
+    border: 3px solid #333 !important;
+    border-radius: 15px !important;
+
+    background: #ffffff !important;
+color: #000000 !important;
+-webkit-text-fill-color: #000000 !important;
+
+    cursor: pointer !important;
+
+    font-size: 28px !important;
+}
+
+.pattern-option:hover {
+    transform: scale(1.03);
+}
+
+.pattern-option strong {
+    margin-right: 15px;
+    font-size: 20px;
+}

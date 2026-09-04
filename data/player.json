@@ -1,0 +1,19 @@
+{
+    "skills": {
+        "Logic": 53,
+        "Pattern Recognition": 77,
+        "Memory": 100,
+        "Strategy": 30,
+        "Attention": 100
+    },
+    "total_points": 285,
+    "games_played": 10,
+    "streak": 0,
+    "best_streak": 2,
+    "badges": [
+        "First Challenge",
+        "Perfect Round",
+        "Sharp Mind",
+        "100 Points"
+    ]
+}
